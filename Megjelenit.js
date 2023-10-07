@@ -1,30 +1,25 @@
+import MegjelenitSor from "./MegjelenitSor.js";
+
 class ListaMegjelenit {
-    constructor(TODOLIST, szuloElem) {
-      this.TODOLIST = TODOLIST;
-      this.szuloElem = szuloElem;
-      let txt = this.htmlOsszeallit();
-      this.szuloElem.html(txt);
-    }
-  
-    htmlOsszeallit() {
-      let txt = "";
-  
-      txt += `<table>`;
-    /*   txt += `<tr>`;
-      for (const kulcs in this.TODOLIST[0]) {
-        txt += `<th>${this.TODOLIST[0][kulcs]}</th>`;
-      }
-      txt += `</tr>`; */
-      for (let index = 0; index < this.TODOLIST.length; index++) {
-        txt += `<tr>`;
-        for (const kulcs in this.TODOLIST[index]) {
-          txt += `<td>${this.TODOLIST[index][kulcs]}</td>`;
-        }
-        txt += `</tr>`;
-      }
-      txt += `</table>`;
-      return txt;
-    }
+  #list = [];
+  constructor(list, szuloElem) {
+    this.#list = list;
+    this.szuloElem = szuloElem;
+    szuloElem.append("<table>")
+    this.tablaElem = szuloElem.children("table");
+    //let txt = this.htmlOsszeallit();
+    this.htmlOsszeallit();
   }
-  
-  export default ListaMegjelenit;
+
+  htmlOsszeallit() {
+    let txt = "";
+
+    for (let index = 0; index < this.#list.length; index++) {
+      txt += "<tr>";
+      new MegjelenitSor(this.#list[index], this.tablaElem);
+    }
+    txt += "</table>";
+  }
+}
+
+export default ListaMegjelenit;

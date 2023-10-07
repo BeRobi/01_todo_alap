@@ -2,8 +2,11 @@
     box-sizing: border-box;
   }
 
+
+  
   table, tr, td{
 
+    
     margin: 1rem;
     border: 1px black solid;
     padding: 15px;
